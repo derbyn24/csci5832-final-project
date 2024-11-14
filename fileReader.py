@@ -3,8 +3,7 @@ import os
 INPUT_PATH = "input"
 OUTPUT_PATH = "output"
 
-#TODO
-#potentially add pdf capabilities
+#TODO right now just prints, eventually we will do more with files
 def read_files(directory_path):
     for file in os.listdir(directory_path):
         file_path = os.path.join(directory_path, file)
