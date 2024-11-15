@@ -17,10 +17,14 @@ def add_elements():
     rightmost_col = 2
 
     #input and output boxes
-    input_box = tk.Label(text="Example Input", anchor="nw", bg="#c4c4c4", borderwidth=2, relief="groove")
+    input_text = tk.Label(text="Input:", anchor="n")
+    input_text.grid(row=0, column=0, padx=10, sticky="nw")
+    input_box = tk.Label(text="Input Preview...", fg="#2e2e2e", anchor="nw", bg="#c4c4c4", borderwidth=2, relief="groove")
     input_box.grid(row=0, column=0, rowspan=3, padx=10, pady=20, sticky="nswe")
 
-    output_box = tk.Label(text="Output Preview", anchor="nw", bg="#e8e8e8", borderwidth=2, relief="groove")
+    output_text = tk.Label(text="Sample Output:", anchor="n")
+    output_text.grid(row=3, column=0, padx=10, sticky="nw")
+    output_box = tk.Label(text="Output Preview...", fg="#2e2e2e", anchor="nw", bg="#e8e8e8", borderwidth=2, relief="groove")
     output_box.grid(row=3, column=0, rowspan=5, padx=10, pady=20, sticky="nswe")
 
     pos_tagging_button = tk.Button(text="Part of Speech Tagging", 
@@ -42,7 +46,7 @@ def add_elements():
     run_button = tk.Button(text="Run", command=run_texts)
     run_button.grid(row=7, column=rightmost_col, pady=20, padx=20, sticky="e")
 
-def add_input_file():
+def add_input_file_upload():
     padding = 20
     upload_file_button = tk.Button(text="Upload File", command=upload_file)
     upload_file_button.grid(row=0, column=2, padx=padding, pady=padding, sticky="e")
@@ -75,7 +79,7 @@ def create_gui():
     window.grid_columnconfigure(2, weight=1)
     window.grid_rowconfigure(0, weight=2)
     window.grid_rowconfigure([1, 2, 3, 4, 5, 6, 7], weight=1)
-    add_input_file()
+    add_input_file_upload()
     add_elements()
 
 def run_texts():

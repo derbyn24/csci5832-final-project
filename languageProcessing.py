@@ -2,9 +2,11 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.tokenize import sent_tokenize, word_tokenize
-nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('wordnet')
+
+# uncomment these to download when running for the first time
+# nltk.download('punkt_tab')
+# nltk.download('averaged_perceptron_tagger_eng')
+# nltk.download('wordnet')
 
 def sentence_detection(text):
     sentences = sent_tokenize(text)
@@ -15,8 +17,9 @@ def tokenize(text):
     return tokens
 
 def part_of_speech_tagging(text):
-    #TODO
-    return text
+    tokens = tokenize(text)
+    pos_tagged = pos_tag(tokens)
+    return pos_tagged
 
 def word_frequency(text):
     #TODO
