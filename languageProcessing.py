@@ -2,6 +2,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.probability import FreqDist
 
 # uncomment these to download when running for the first time
 # nltk.download('punkt_tab')
@@ -21,9 +22,12 @@ def part_of_speech_tagging(text):
     pos_tagged = pos_tag(tokens)
     return pos_tagged
 
-def word_frequency(text):
-    #TODO
-    return text
+def word_frequency(text, preview = False):
+    tokens = tokenize(text)
+    fq = FreqDist(token.lower() for token in tokens)
+    if preview:
+        return fq.most_common(10)
+    return fq
 
 def convert_pos_to_wordnet(tag):
     if tag.startswith('J'):

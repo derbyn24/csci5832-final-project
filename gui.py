@@ -102,6 +102,9 @@ def change_mode(new_mode, button, input_box, output_box):
 def run_first_sentence():
     line = get_first_line(INPUT_PATH)
     first_sentence = sentence_detection(line)[0]
+    if mode_func == word_frequency:
+        output_sentence = mode_func(first_sentence, True)
+        return first_sentence, output_sentence
     output_sentence = mode_func(first_sentence)
     return first_sentence, output_sentence
 
