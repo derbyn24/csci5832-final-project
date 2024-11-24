@@ -10,12 +10,24 @@ GUI Plans: my plan so far for the gui is that users will select whichever "mode"
 
 I'd also like to do a progress bar while the files are running if possible but tkinter is annoying to work with thus far so we'll see. 
 
-TODO's (these are mostly for my benefit): 
--add code to copy a file to the input folder
--implement "run" logic -potentially a "download" button so that users can download the "output" folder to their computer rather than having to mess with internal files
--potentially package this in some way, website, exe or something else
--finish up sentence detection, tokenization, word frequency, potentially chunking?
--figure out what output should actually look like
--fix gui so textbox is a consistent size and text wraps
--make gui code cleaner?
--progress bar??
+TODO's: 
+
+- [ ] add code to copy a file to the input folder
+
+- [ ] implement "run" logic 
+
+- [ ] add a "download" button so that users can download the "output" folder to their computer rather than having to mess with internal files
+
+- [ ] potentially package this in some way, website, exe or something else
+
+- [ ] potentially implement chunking? or adding other nltk functions
+
+- [ ] figure out formatting of the output
+
+- [ ] make gui code cleaner?
+
+    - [ ] fix gui so textbox is a consistent size and text wraps
+
+    - [ ] progress bar??
+
+    - [ ] move code logic out of gui? Should probably be Model/View/Controller pattern

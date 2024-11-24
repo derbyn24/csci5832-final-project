@@ -83,8 +83,8 @@ def create_gui():
     add_elements()
 
 def run_texts():
-    #TODO this function will run all text with the selected mode
-    pass
+    #TODO add progress bar logic here
+    read_and_write_files(mode_func)
 
 def change_mode(new_mode, button, input_box, output_box):
     global mode_func

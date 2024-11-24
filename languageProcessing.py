@@ -20,7 +20,10 @@ def tokenize(text):
 def part_of_speech_tagging(text):
     tokens = tokenize(text)
     pos_tagged = pos_tag(tokens)
-    return pos_tagged
+    strings = []
+    for token in pos_tagged:
+        strings.append(str(token[0]) + "," + str(token[1]))
+    return strings
 
 def word_frequency(text, preview = False):
     tokens = tokenize(text)
