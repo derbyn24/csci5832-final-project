@@ -1,16 +1,19 @@
 import os
 from languageProcessing import *
+from tkinter import filedialog
 
 INPUT_PATH = "input"
 OUTPUT_PATH = "output"
 
-#TODO right now just prints, eventually we will do more with files
-def read_files(directory_path):
-    for file in os.listdir(INPUT_PATH):
-        file_path = os.path.join(directory_path, file)
-        with open(file_path, encoding="utf-8") as f:
-            for line in f: 
-                print(line.strip())
+def upload_file():
+    file_path = filedialog.askopenfilename()
+    if file_path:
+        src = file_path
+        file_name = file_path.split('/')[-1].split(".")[0]
+        dest = ".\\" + file_name
+        command = "copy " + "\"" + src + "\" " + "\"" + dest + "\""
+        # TODO Resolve errors
+        os.system(command)
 
 def read_and_write_files(function):
     for file in os.listdir(INPUT_PATH):

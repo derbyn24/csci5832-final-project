@@ -1,6 +1,5 @@
 import tkinter as tk
 import os
-from tkinter import filedialog
 from tkinter import ttk
 from languageProcessing import *
 from fileReader import *
@@ -64,12 +63,6 @@ def add_input_file_upload():
         tk.Label(frame, text=file).grid(row=i, column=1)
         i += 1
     frame.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
-
-def upload_file():
-    file_path = filedialog.askopenfilename()
-    if file_path:
-        #TODO copy the file to the input location
-        print("Selected file:", file_path)
 
 def create_gui(): 
     window.title("Natural Language Toolkit Visual Tool")
