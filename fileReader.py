@@ -1,19 +1,34 @@
 import os
 from languageProcessing import *
 from tkinter import filedialog
+import PyPDF2
 
 INPUT_PATH = "input"
 OUTPUT_PATH = "output"
+
+def pdf_to_txt(pdf_file, txt_file):
+    with open(pdf_file, 'rb') as pdf_reader:
+        pdf = PyPDF2.PdfReader(pdf_reader)
+        text = ""
+        for page in pdf.pages:
+            text += page.extract_text()
+
+    with open(txt_file, 'w') as txt_writer:
+        txt_writer.write(text)
 
 def upload_file():
     file_path = filedialog.askopenfilename()
     if file_path:
         src = file_path
-        file_name = file_path.split('/')[-1].split(".")[0]
-        dest = ".\\" + file_name
-        command = "copy " + "\"" + src + "\" " + "\"" + dest + "\""
-        # TODO Resolve errors
-        os.system(command)
+        file_split = file_path.split('/')[-1].split(".")
+        file_name = file_split[0]
+        file_ext = file_split[1]
+        dest = INPUT_PATH + ".\\" + file_name
+        if file_ext == "pdf":
+            pdf_to_txt(src, dest)
+        else:
+            command = "copy " + "\"" + src + "\" " + "\"" + dest + "\""
+            os.system(command)
 
 def read_and_write_files(function):
     for file in os.listdir(INPUT_PATH):

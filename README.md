@@ -22,10 +22,9 @@ I'd also like to do a progress bar while the files are running if possible but t
 
 TODO's: 
 
-- [ ] finish code to copy a file to the input folder
-- [ ] add pdf support?
+- [ ] Make it so that uploading files updates the file list
 
-- [ ] implement "run" logic 
+- [ ] fully implement "run" logic 
 
 - [ ] add a "download" button so that users can download the "output" folder to their computer rather than having to mess with internal files
 
