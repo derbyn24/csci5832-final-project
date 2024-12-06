@@ -12,29 +12,17 @@ How to use:
 [PUT HOWEVER YOU START THE TOOL HERE]. In the window, select the Upload File button and select the appropriate txt [OR PDF?] file. Then, select the desired option from the menu on the right. You should see a preview populate on the left hand side, demonstrating what the output would look like using the first sentence from the first file. If this preview looks correct, select the Run button. This will run the selected option on all files (which can be viewed in the miniviewer located next to the Upload Button). You should see a loading bar indicating progress [IF THIS GETS IMPLEMENTED]. To download your files, press the download button. This will create a folder called "Output" in your downloads, containing annotated .txt files. 
 
 
-//notes (to be deleted)
-
-I'm starting to draft my functions in a notebook just so they can easily be run and tested, but probably we'll have to migrate them to a regular python file eventually.
-
-GUI Plans: my plan so far for the gui is that users will select whichever "mode" they want to use, and it'll display a sample output on the first sentence of the first file to show what the output would look like, then a user will hit run to analyze all the files. I feel like it would be nicer to see an example output before spending a lot of time running files. 
-
-I'd also like to do a progress bar while the files are running if possible but tkinter is annoying to work with thus far so we'll see. 
-
 TODO's: 
 
-- [ ] Make it so that uploading files updates the file list
-
 - [ ] fully implement "run" logic 
+
+- [ ] figure out formatting of the output
 
 - [ ] package this in some way, website, exe or something else
 
 - [ ] potentially implement chunking? or adding other nltk functions
 
-- [ ] figure out formatting of the output
-
 - [ ] make gui code cleaner and potentially look nicer?
-
-    - [ ] fix gui so textbox is a consistent size and text wraps
 
     - [ ] progress bar??
 
