@@ -85,11 +85,14 @@ def run_texts(run_button, progress_bar):
     progress_bar["maximum"] = 100
 
     run_button.config(state="disabled")
-
-    progress_bar["value"] += 10
-    progress_bar.update()
-    read_and_write_files(mode_func)
+    number_files = len(os.listdir(INPUT_PATH))
+    step = 100 / number_files
+    for file in os.listdir(INPUT_PATH):
+        read_and_write_file(mode_func, file)
+        progress_bar["value"] += step
+        progress_bar.update()
     run_button.config(state="normal")
+    progress_bar.grid_remove()
 
 def change_mode(new_mode, button, input_box, output_box, run_button):
     global mode_func

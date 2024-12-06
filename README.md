@@ -14,8 +14,6 @@ How to use:
 
 TODO's: 
 
-- [ ] fully implement "run" logic 
-
 - [ ] figure out formatting of the output
 
 - [ ] package this in some way, website, exe or something else
@@ -23,7 +21,5 @@ TODO's:
 - [ ] potentially implement chunking? or adding other nltk functions
 
 - [ ] make gui code cleaner and potentially look nicer?
-
-    - [ ] progress bar??
 
     - [ ] move code logic out of gui? Should probably be Model/View/Controller pattern

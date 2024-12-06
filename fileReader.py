@@ -49,15 +49,15 @@ def download_files():
         command = "move " + src + " " + path + "\\"
         os.system(command)
 
-def read_and_write_files(function):
-    for file in os.listdir(INPUT_PATH):
-        file_path = os.path.join(INPUT_PATH, file)
-        with open(file_path, encoding="utf-8") as f:
-            output_text = ""
-            for line in f: 
-                for token in function(line):
-                    output_text += "\n" + token
-            create_file(output_text, file)
+def read_and_write_file(function, file):
+    file_path = os.path.join(INPUT_PATH, file)
+    with open(file_path, encoding="utf-8") as f:
+        output_text = ""
+        for line in f: 
+            for token in function(line):
+                output_text += " " + token
+            output_text += "\n"
+        create_file(output_text, file)
 
 def create_file(text, filename):
     with open(OUTPUT_PATH + "/" + filename, "w") as file:
