@@ -30,6 +30,25 @@ def upload_file():
             command = "copy " + "\"" + src + "\" " + "\"" + dest + "\""
             os.system(command)
 
+def download_files():
+    downloads_dir = os.path.expanduser('~') + "\\" + "Downloads"
+    output_dir = "\output"
+    path = downloads_dir + output_dir
+    #check if output already exists, if not then make it, if so create output(1), output(2)...
+    if not os.path.exists(path):
+        os.system("mkdir " + path)
+    else:
+        value = 0
+        while os.path.exists(path):
+            value += 1
+            path = downloads_dir + output_dir + "(" + str(value) + ")"
+        os.system("mkdir " + path)
+
+    for file in os.listdir(OUTPUT_PATH):
+        src = OUTPUT_PATH + "\\" + file
+        command = "move " + src + " " + path + "\\"
+        os.system(command)
+
 def read_and_write_files(function):
     for file in os.listdir(INPUT_PATH):
         file_path = os.path.join(INPUT_PATH, file)

@@ -45,6 +45,9 @@ def add_elements():
     run_button = tk.Button(text="Run", command=run_texts)
     run_button.grid(row=7, column=rightmost_col, pady=20, padx=20, sticky="e")
 
+    download_file_button = tk.Button(text="Download Files", command=download_files)
+    download_file_button.grid(row=7, column=rightmost_col - 1, padx=20, pady=20, sticky="e")
+
 def add_input_file_upload():
     padding = 20
     upload_file_button = tk.Button(text="Upload File", command=upload_file)
