@@ -3,6 +3,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.probability import FreqDist
+from fileReader import get_first_line
 
 # uncomment these to download when running for the first time
 # nltk.download('punkt_tab')
@@ -50,6 +51,11 @@ def lemmatization(text):
     tagged_tokens = pos_tag(tokens)
     lemmatized_tokens = [lemmatizer.lemmatize(token, convert_pos_to_wordnet(pos_tag)) for token, pos_tag in tagged_tokens]
     return lemmatized_tokens
+
+def get_first_sentence():
+    line = get_first_line()
+    first_sentence = sentence_detection(line)[0]
+    return first_sentence
 
 def chunking(text):
     #TODO

@@ -7,24 +7,19 @@ from fileReader import *
 mode_func = None
 prev_button = None
 
-#TODO this current gui is a proof of concept and will be cleaned later
-#Onclick: when a button is clicked, ex. lemmatization, it will only run on the first example
-# sentence and change the mode to "lemmatization". 
-# Then when "run" is clicked, it will run that paricular mode on all files
-
 def add_elements():
     rightmost_col = 2
 
     #input and output boxes
     input_text = tk.Label(text="Input:", anchor="n")
     input_text.grid(row=0, column=0, padx=10, sticky="nw")
-    input_box = tk.Label(text="Input Preview...", fg="#2e2e2e", anchor="nw", bg="#c4c4c4", borderwidth=2, relief="groove")
-    input_box.grid(row=0, column=0, rowspan=3, padx=10, pady=20, sticky="nswe")
+    input_box = tk.Label(text="Input Preview...", fg="#2e2e2e", width=35, anchor="nw", bg="#c4c4c4", borderwidth=2, relief="groove", wraplength=250)
+    input_box.grid(row=0, column=0, rowspan=3, padx=10, pady=20, sticky="nsw")
 
     output_text = tk.Label(text="Sample Output:", anchor="n")
     output_text.grid(row=3, column=0, padx=10, sticky="nw")
-    output_box = tk.Label(text="Output Preview...", fg="#2e2e2e", anchor="nw", bg="#e8e8e8", borderwidth=2, relief="groove")
-    output_box.grid(row=3, column=0, rowspan=5, padx=10, pady=20, sticky="nswe")
+    output_box = tk.Label(text="Output Preview...", fg="#2e2e2e", width=35, anchor="nw", bg="#e8e8e8", borderwidth=2, relief="groove", wraplength=250)
+    output_box.grid(row=3, column=0, rowspan=5, padx=10, pady=20, sticky="nsw")
 
     pos_tagging_button = tk.Button(text="Part of Speech Tagging", 
                                    command= lambda: change_mode(part_of_speech_tagging, pos_tagging_button, input_box, output_box))
@@ -96,8 +91,7 @@ def change_mode(new_mode, button, input_box, output_box):
     change_text(original_sen, input_box, output_sen, output_box)
 
 def run_first_sentence():
-    line = get_first_line(INPUT_PATH)
-    first_sentence = sentence_detection(line)[0]
+    first_sentence = get_first_sentence()
     if mode_func == word_frequency:
         output_sentence = mode_func(first_sentence, True)
         return first_sentence, output_sentence

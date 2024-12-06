@@ -63,7 +63,7 @@ def create_file(text, filename):
     with open(OUTPUT_PATH + "/" + filename, "w") as file:
         file.write(text)
 
-def get_first_line(directory_path):
+def get_first_line(directory_path = INPU):
     first_file = os.listdir(directory_path)[0]
     file_path = os.path.join(directory_path, first_file)
     with open(file_path, encoding="utf-8") as f:
