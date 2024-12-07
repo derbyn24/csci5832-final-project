@@ -1,14 +1,10 @@
 import nltk
 from nltk.stem import WordNetLemmatizer
-from nltk import pos_tag
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk import pos_tag, ne_chunk
+from nltk.tokenize import sent_tokenize
 from nltk.probability import FreqDist
+from nltk.tree import Tree
 from fileReader import get_first_line
-
-# uncomment these to download when running for the first time
-# nltk.download('punkt_tab')
-# nltk.download('averaged_perceptron_tagger_eng')
-# nltk.download('wordnet')
 
 def sentence_detection(text):
     sentences = sent_tokenize(text)
@@ -23,15 +19,25 @@ def part_of_speech_tagging(text):
     pos_tagged = pos_tag(tokens)
     strings = []
     for token in pos_tagged:
-        strings.append(str(token[0]) + "," + str(token[1]))
+        strings.append(str(token[0]) + " [" + str(token[1]) + "]")
+    strings = " ".join(strings)
     return strings
+    # text, tags = ""
+    # for token in pos_tagged:
+    #     text += str(token[0]) + "\t"
+    #     tags += str(token[1]) + "\t"
+    # string = text + "\n" + tags
+    # return string
 
 def word_frequency(text, preview = False):
     tokens = tokenize(text)
     fq = FreqDist(token.lower() for token in tokens)
     if preview:
         return fq.most_common(10)
-    return fq
+    string = ""
+    for word in fq:
+        string += word + " {" + str(fq.get(word)) + "}\n"
+    return string
 
 def convert_pos_to_wordnet(tag):
     if tag.startswith('J'):
@@ -50,14 +56,24 @@ def lemmatization(text):
     lemmatizer = WordNetLemmatizer()
     tagged_tokens = pos_tag(tokens)
     lemmatized_tokens = [lemmatizer.lemmatize(token, convert_pos_to_wordnet(pos_tag)) for token, pos_tag in tagged_tokens]
-    return lemmatized_tokens
+    string = " ".join(lemmatized_tokens)
+    return string
 
 def get_first_sentence():
     line = get_first_line()
     first_sentence = sentence_detection(line)[0]
     return first_sentence
 
-def chunking(text):
-    #TODO
-    return text
+def named_entity_recognition(text):
+    tokens = nltk.word_tokenize(text)
+    pos_tags = pos_tag(tokens)
+    named_entities = ne_chunk(pos_tags)
+    string = ""
+    for chunk in named_entities:
+        if isinstance(chunk, Tree):
+            entity = " ".join(c[0] for c in chunk)
+            label = chunk.label()
+            string += " " + label + " " + entity
+    string += " "
+    return string
 
