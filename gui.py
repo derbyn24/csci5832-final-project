@@ -41,9 +41,9 @@ def add_elements():
                                      command=lambda: change_mode(lemmatization, lemmatization_button, input_box, output_box, run_button))
     lemmatization_button.grid(row=3, column=rightmost_col, padx=20, sticky="e")
 
-    chunking_button = tk.Button(text="Text Chunking", 
-                                command=lambda: change_mode(chunking, chunking_button, input_box, output_box, run_button))
-    chunking_button.grid(row=4, column=rightmost_col, padx=20, sticky="e")
+    named_entity_button = tk.Button(text="Named Entity Recognition", 
+                                command=lambda: change_mode(named_entity_recognition, named_entity_button, input_box, output_box, run_button))
+    named_entity_button.grid(row=4, column=rightmost_col, padx=20, sticky="e")
 
     download_file_button = tk.Button(text="Download Files", command=download_files)
     download_file_button.grid(row=7, column=rightmost_col - 1, padx=20, pady=20, sticky="e")
@@ -81,12 +81,13 @@ def create_gui():
 
 def run_texts(run_button, progress_bar):
     progress_bar.grid(row=6, column=2, padx=10, pady=10, sticky="nsew")
-    progress_bar["value"] = 0
+    progress_bar["value"] = 1
     progress_bar["maximum"] = 100
 
     run_button.config(state="disabled")
     number_files = len(os.listdir(INPUT_PATH))
     step = 100 / number_files
+    progress_bar.update()
     for file in os.listdir(INPUT_PATH):
         read_and_write_file(mode_func, file)
         progress_bar["value"] += step

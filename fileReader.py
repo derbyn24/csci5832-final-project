@@ -50,13 +50,17 @@ def download_files():
         os.system(command)
 
 def read_and_write_file(function, file):
+    from languageProcessing import sentence_detection, word_frequency, named_entity_recognition
     file_path = os.path.join(INPUT_PATH, file)
     with open(file_path, encoding="utf-8") as f:
         output_text = ""
-        for line in f: 
-            for token in function(line):
-                output_text += " " + token
-            output_text += "\n"
+        text = f.read()
+        if function == word_frequency:
+            output_text = function(text)
+        else:
+            sentences = sentence_detection(text)
+            for line in sentences: 
+                output_text += function(line) + "\n"
         create_file(output_text, file)
 
 def create_file(text, filename):
