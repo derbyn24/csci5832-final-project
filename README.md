@@ -42,6 +42,17 @@ Once the window has been opened, select the Upload File button and select the ap
 - Named Entity Recognition
   This option extracts the named entities from the document. The categories are GPE (Geopolitical Entity), Organization, Person, and Location
 
+# Object Oriented Principles
+
+This project is mainly based around encapsulation of the technical requirements when using NLTK. The code is meant to be easy to understand and simplified. Other object oriented principles are applied in this project are: 
+
+Model View Controller demonstrated by the separate GUI and languageProcessing scripts which are mediated mainly through fileReader. 
+Strategy Pattern which can be seen in the switching of the mode_func parameter. At runtime, the strategy for the run function can be changed depending on the user's input. 
+Builder pattern is also loosly used in tkinter (the GUI platform), where elements are created iteratively and added to the grid, then the window is created. 
+
+Challenges:
+Because python has only public variables, it was a challenge to effectively keep variables private. Tkinter (the GUI platform) also encourages and expects public variables. For example, labels and boxes are typically public and not created inside a function, but in the main script so accessing them for the purpose of updating them while maintaining private (ish) variables proved to be a challenge. However, by passing the objects to the functions in the GUI, we could effectively keep variables private and to one single instance (making a pseudo singleton pattern). 
+
 # Notes for Graders
 
 Unit testing can be found in "unit_testing.ipynb".

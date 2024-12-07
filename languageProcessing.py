@@ -22,12 +22,6 @@ def part_of_speech_tagging(text):
         strings.append(str(token[0]) + " [" + str(token[1]) + "]")
     strings = " ".join(strings)
     return strings
-    # text, tags = ""
-    # for token in pos_tagged:
-    #     text += str(token[0]) + "\t"
-    #     tags += str(token[1]) + "\t"
-    # string = text + "\n" + tags
-    # return string
 
 def word_frequency(text, preview = False):
     tokens = tokenize(text)
