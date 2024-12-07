@@ -23,11 +23,11 @@ def upload_file():
         file_split = file_path.split('/')[-1].split(".")
         file_name = file_split[0]
         file_ext = file_split[1]
-        dest = INPUT_PATH + ".\\" + file_name
+        dest = "./" + INPUT_PATH + "/" + file_name
         if file_ext == "pdf":
             pdf_to_txt(src, dest)
         else:
-            command = "copy " + "\"" + src + "\" " + "\"" + dest + "\""
+            command = "copy " + src + " " + dest
             os.system(command)
 
 def download_files():
