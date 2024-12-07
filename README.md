@@ -17,12 +17,12 @@ There are two ways to start the NLTK Visual Tool.
 
 2. The NLTK Visual Tool can also be manually run by running the gui.py script. To install the necessary packages, run the following lines in terminal. 
 
-{ python NLTK_downloads.py }
-{ pip install -r requirements.txt }
+        python NLTK_downloads.py
+        pip install -r requirements.txt
 
 Once these are installed, you can run the NLTK Visual Tool with
 
-{ python gui.py }
+    python gui.py
 
 
 ## Using the tool
